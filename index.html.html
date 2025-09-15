@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Para o amor da minha vida Izamara 💌</title>
+  <style>
+    :root{--bg1:#ffefd5;--bg2:#ffe4f0;--card:#ffffffcc;--accent:#ff5c9a;}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+    body{background: radial-gradient(circle at 10% 10%, #fff0f6 0%, #ffeef8 15%, #fff7f0 40%), linear-gradient(135deg,var(--bg1),var(--bg2)); display:flex;align-items:center;justify-content:center;padding:24px;}
+    .card{width:100%;max-width:520px;background:var(--card);backdrop-filter: blur(6px);border-radius:18px;padding:28px;box-shadow:0 10px 30px rgba(0,0,0,0.08);position:relative;overflow:hidden;}
+    h1{margin:0;font-size:1.6rem;color:#333;}
+    .subtitle{color:#7a5070;margin-top:6px;font-size:0.95rem;}
+    .hearts{position:absolute;right:-40px;top:-40px;pointer-events:none;}
+    .heart{width:28px;height:28px;background:var(--accent);transform:rotate(-45deg);border-radius:6px 6px 0 0;position:absolute;opacity:0.95;}
+    .heart:before,.heart:after{content:'';position:absolute;width:28px;height:28px;background:var(--accent);border-radius:50%;}
+    .heart:before{top:-14px;left:0;}
+    .heart:after{left:14px;top:0;}
+    @keyframes floatUp{0%{transform:translateY(0) scale(.9) rotate(-15deg);opacity:0.9}100%{transform:translateY(-260px) scale(1.05) rotate(10deg);opacity:0}}
+    .heart.one{right:12px;top:60px;animation:floatUp 6s linear infinite;animation-delay:0s}
+    .heart.two{right:44px;top:40px;animation:floatUp 5.2s linear infinite;animation-delay:1s}
+    .heart.three{right:80px;top:80px;animation:floatUp 7s linear infinite;animation-delay:0.6s}
+
+    .message{margin-top:18px;font-size:1rem;color:#3b2b35;line-height:1.5}
+    .reveal{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+    .btn{background:linear-gradient(90deg,var(--accent),#ff8bb7);border:none;padding:10px 14px;border-radius:12px;color:white;font-weight:600;cursor:pointer}
+    .small{font-size:0.86rem;color:#6d4a62}
+    .typed{font-family:'Courier New', Courier, monospace;padding:12px;border-radius:10px;border:1px dashed rgba(120,80,100,0.12);min-height:84px;}
+    footer{margin-top:14px;font-size:0.82rem;color:#8a6b7f;white-space:pre-line;}
+    @media (max-width:420px){.card{padding:20px;border-radius:14px}}
+  </style>
+</head>
+<body>
+  <div class="card" role="main">
+    <div class="hearts" aria-hidden="true">
+      <div class="heart one"></div>
+      <div class="heart two"></div>
+      <div class="heart three"></div>
+    </div>
+
+    <h1>Para o amor da minha vida Izamara 💌</h1>
+    <div class="subtitle">Scanear o QR e ler com carinho ❤️</div>
+
+    <div class="message">
+      <div class="typed" id="typed">Clique em "Abrir mensagem" para ver sua surpresa.</div>
+
+      <div class="reveal">
+        <button class="btn" id="openBtn">Abrir mensagem</button>
+        <button class="btn" id="copyBtn" style="background:transparent;color:var(--accent);border:1px solid rgba(255,92,154,0.12);font-weight:700">Copiar mensagem</button>
+      </div>
+
+      <div class="small" style="margin-top:10px">Dica: abra no celular pra ativar a animação e o tipo "digitando" ✨</div>
+    </div>
+
+    <footer>Feito com carinho. ❤️</footer>
+  </div>
+
+  <!-- Música automática via YouTube -->
+  <iframe width="0" height="0" src="https://www.youtube.com/embed/N4QwLKYVDIY?autoplay=1&loop=1&playlist=N4QwLKYVDIY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+  <script>
+    const mensagem = `Dedico essa carta para a pessoa que entrou na minha vida e me reacendeu a chama que estava apagada no meu coração, que me dá força pra lutar todos os dias para que possamos ter a vida que nós sempre sonhamos.\n\nEu te amo, meu amor. ❤️\n\nAssinado: ynz_dust`;
+
+    const typedEl = document.getElementById('typed');
+    const openBtn = document.getElementById('openBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    let typedRunning = false;
+
+    function typeText(text, el, speed=28){
+      el.textContent = '';
+      let i=0;
+      typedRunning=true;
+      const interval=setInterval(()=>{
+        if(i>=text.length){clearInterval(interval);typedRunning=false;return;}
+        el.textContent+=text[i++];
+      }, speed);
+    }
+
+    openBtn.addEventListener('click', ()=>{
+      if(typedRunning) return;
+      typeText(mensagem, typedEl, 28);
+    });
+
+    copyBtn.addEventListener('click', ()=>{
+      navigator.clipboard.writeText(mensagem).then(()=>{
+        copyBtn.textContent='Copiado!';
+        setTimeout(()=>copyBtn.textContent='Copiar mensagem',1600);
+      }).catch(()=>{
+        alert('Não foi possível copiar — selecione e copie manualmente.');
+      })
+    });
+  </script>
+</body>
+</html>
